@@ -1,2 +1,2 @@
 # mandrabcvstyle
-Custom CV style
+Custom style for LaTeX CV
