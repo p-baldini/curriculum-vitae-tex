@@ -114,7 +114,7 @@
   {
     \vspace{2\baselineskip}\newline\upshape
     \begin{minipage}[t]{.75\textwidth}
-      Cesena, \today
+      Bologna, \today
     \end{minipage}
     %
     \begin{minipage}[t]{.25\textwidth}
