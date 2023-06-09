@@ -4,6 +4,7 @@
 
 \RequirePackage[sfdefault]{classico}
 \RequirePackage[T1]{fontenc}
+\RequirePackage{fontawesome}
 \RequirePackage[a4paper, left=1cm, top=1cm, right=1cm, bottom=1.5cm]{geometry}
 \RequirePackage{graphicx}
 \RequirePackage{hyperref}
@@ -43,9 +44,9 @@
 \newcommand{\email}[1]{\renewcommand{\candidateEmail}{\href{mailto:#1}{\ttfamily #1}}}
 \newcommand{\phone}[1]{\renewcommand{\candidatePhone}{#1}}
 \newcommand{\drivingLicence}[1]{\renewcommand{\candidateDrivingLicence}{, \quad Driving Licence #1}}
-\newcommand{\github}[1]{\renewcommand{\candidateGithub}{\href{#1}{\ttfamily GitHub:#1}}}
-\newcommand{\scholar}[1]{\renewcommand{\candidateScholar}{\href{#1}{\ttfamily Google Scholar:#1}}}
-
+\newcommand{\github}[2]{\renewcommand{\candidateGithub}{\href{#2}{\ttfamily \faGithub~GitHub ID: #1}}}
+\newcommand{\scholar}[2]{\renewcommand{\candidateScholar}{\href{#2}{\ttfamily \faGoogle~#1}}}
+\newcommand{\university}[2]{\renewcommand{\candidateUniversity}{\href{#2}{\ttfamily \faUniversity~#1}}}
 \newcommand{\candidatePhoto}{TODO}
 \newcommand{\candidateName}{TODO}
 \newcommand{\candidateBirthday}{TODO}
@@ -55,6 +56,7 @@
 \newcommand{\candidateDrivingLicence}{}
 \newcommand{\candidateGithub}{}
 \newcommand{\candidateScholar}{}
+\newcommand{\candidateUniversity}{}
 
 \newenvironment{candidate}
   {}
@@ -74,7 +76,7 @@
         \rule{\dimexpr \textwidth - 3cm}{1px}\\
         \candidateBirthday, \quad \candidateLocation\vspace{5pt} \\
         \candidateEmail, \quad \candidatePhone \candidateDrivingLicence \vspace{5pt} \\
-        \candidateGithub, \quad \candidateScholar
+        \candidateGithub, \quad \candidateScholar, \quad \candidateUniversity
       \end{minipage}
       \vspace{.5cm}
     \end{tcolorbox}
