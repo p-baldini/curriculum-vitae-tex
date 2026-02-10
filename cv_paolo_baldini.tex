@@ -2,6 +2,8 @@
 
 \usepackage{multicol}
 
+\usepackage[english]{babel}
+
 \begin{document}
 
 \begin{candidate}
@@ -19,30 +21,25 @@
     \linkedin{Linkedin}{https://www.linkedin.com/in/baldini-paolo}
 \end{candidate}
 
-\input{section/en/education}
+\input{section/\languagename/education}
 
-\input{section/en/publication}
+\input{section/\languagename/publication}
 
-\input{section/en/academy}
+\input{section/\languagename/academy}
 
-\input{section/en/work}
+\input{section/\languagename/work}
 
-\input{section/en/language}
+\input{section/\languagename/language}
 
-\input{section/en/project}
+\input{section/\languagename/project}
 
-\input{section/en/competency}
+\input{section/\languagename/competency}
 \vspace{-2\baselineskip}
 
-\input{section/en/skill}
+\input{section/\languagename/skill}
 
 \begin{declaration}
-    In compliance with the Italian Legislative Decree no. 196 dated 30/06/2003,
-    and in agreement with the GDPR (EU Regulation 2016/679),
-    I hereby authorize the recipient of this document to use
-    and process my personal details for the purpose of recruiting
-    and selecting staff and I confirm to be informed of my rights
-    in accordance with art. 7 of the above-mentioned decree.
+    \input{section/\languagename/declaration}
     \signature{res/signature.png}
 \end{declaration}
 

@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{mandrabcvstyle}[2022/06/07 Mandrab custom CV class]
+\ProvidesClass{mystyle}[2026/02/10 P. Baldini custom CV class]
 \LoadClass{article}
 
 \RequirePackage[sfdefault]{classico}
@@ -11,6 +11,7 @@
 \RequirePackage{hyperref}
 \RequirePackage[most]{tcolorbox}
 \RequirePackage{titlesec}
+\RequirePackage{tracklang}
 
 % PAGE STYLE SETTINGS
 \pagestyle{empty}
