@@ -6,7 +6,7 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage{fontawesome}
 \RequirePackage{etaremune}
-\RequirePackage[a4paper, left=1cm, top=1cm, right=1cm, bottom=1.5cm]{geometry}
+\RequirePackage[a4paper, left=1cm, top=1cm, right=1cm, bottom=1cm]{geometry}
 \RequirePackage{graphicx}
 \RequirePackage{hyperref}
 \RequirePackage[most]{tcolorbox}
@@ -50,35 +50,23 @@
 \newcommand{\skill}[3]{{\scshape\bfseries #1} \hfill \knowledge{#2}\\ #3}
 
 % DEFINE PERSONAL INFORMATION
-\newcommand{\photo}[1]{\renewcommand{\candidatePhoto}{
+\newcommand{\photo}[1]{\newcommand{\candidatePhoto}{
   \tcbincludegraphics[hbox, graphics options={width=\textwidth}, colframe=gray, size=tight, boxrule=2px, arc=15mm, auto outer arc, nobeforeafter]{#1}
 }}
-\newcommand{\name}[1]{\renewcommand{\candidateName}{{\Huge\bfseries\scshape #1}}}
-\newcommand{\birthday}[1]{\renewcommand{\candidateBirthday}{Date of birth: #1}}
-\newcommand{\datadinascita}[1]{\renewcommand{\candidateBirthday}{Nato il #1}}
-\newcommand{\location}[1]{\renewcommand{\candidateLocation}{#1}}
-\newcommand{\residenza}[1]{\renewcommand{\candidateLocation}{Residente a #1}}
-\newcommand{\email}[1]{\renewcommand{\candidateEmail}{\href{mailto:#1}{\ttfamily #1}}}
-\newcommand{\phone}[1]{\renewcommand{\candidatePhone}{#1}}
-\newcommand{\drivingLicence}[1]{\renewcommand{\candidateDrivingLicence}{, \quad Driving Licence #1}}
-\newcommand{\patente}[1]{\renewcommand{\candidateDrivingLicence}{, \quad Patente #1}}
-\newcommand{\home}[2]{\renewcommand{\candidateHome}{\href{#2}{\ttfamily \faHome~#1}}}
-\newcommand{\github}[2]{\renewcommand{\candidateGithub}{\href{#2}{\ttfamily \faGithub~#1}}}
-\newcommand{\scholar}[2]{\renewcommand{\candidateScholar}{\href{#2}{\ttfamily \faGoogle~#1}}}
-\newcommand{\university}[2]{\renewcommand{\candidateUniversity}{\href{#2}{\ttfamily \faUniversity~#1}}}
-\newcommand{\linkedin}[2]{\renewcommand{\candidateLinkedin}{\href{#2}{\ttfamily \faLinkedinSquare~#1}}}
-\newcommand{\candidatePhoto}{TODO}
-\newcommand{\candidateName}{TODO}
-\newcommand{\candidateBirthday}{TODO}
-\newcommand{\candidateLocation}{TODO}
-\newcommand{\candidateEmail}{TODO}
-\newcommand{\candidatePhone}{TODO}
-\newcommand{\candidateDrivingLicence}{}
-\newcommand{\candidateHome}{}
-\newcommand{\candidateGithub}{}
-\newcommand{\candidateScholar}{}
-\newcommand{\candidateUniversity}{}
-\newcommand{\candidateLinkedin}{}
+\newcommand{\name}[1]{\newcommand{\candidateName}{{\Huge\bfseries\scshape #1}}}
+\newcommand{\birthday}[1]{\newcommand{\candidateBirthday}{Date of birth: #1}}
+\newcommand{\datadinascita}[1]{\newcommand{\candidateBirthday}{Nato il #1}}
+\newcommand{\location}[1]{\newcommand{\candidateLocation}{#1}}
+\newcommand{\residenza}[1]{\newcommand{\candidateLocation}{Residente a #1}}
+\newcommand{\email}[1]{\newcommand{\candidateEmail}{\href{mailto:#1}{\ttfamily #1}}}
+\newcommand{\phone}[1]{\newcommand{\candidatePhone}{#1}}
+\newcommand{\drivingLicence}[1]{\newcommand{\candidateDrivingLicence}{Driving Licence #1}}
+\newcommand{\patente}[1]{\newcommand{\candidateDrivingLicence}{Patente #1}}
+\newcommand{\home}[2]{\newcommand{\candidateHome}{\href{#2}{\ttfamily \faHome~#1}}}
+\newcommand{\github}[2]{\newcommand{\candidateGithub}{\href{#2}{\ttfamily \faGithub~#1}}}
+\newcommand{\scholar}[2]{\newcommand{\candidateScholar}{\href{#2}{\ttfamily \faGoogle~#1}}}
+\newcommand{\university}[2]{\newcommand{\candidateUniversity}{\href{#2}{\ttfamily \faUniversity~#1}}}
+\newcommand{\linkedin}[2]{\newcommand{\candidateLinkedin}{\href{#2}{\ttfamily \faLinkedinSquare~#1}}}
 
 \newenvironment{candidate}
   {}
@@ -88,17 +76,38 @@
       opacityframe=0, size=tight,
       spread inwards, spread outwards, spread upwards
     ]
-      \hfill
-      \begin{minipage}{3cm}\vspace{.5cm}
-        \candidatePhoto
-      \end{minipage}
-      \hfill
+      \@ifundefined{candidatePhoto}{
+        \hspace{0.8cm}
+      }{
+        \hfill
+        \begin{minipage}{3cm}\vspace{.5cm}
+          \candidatePhoto
+        \end{minipage}
+        \hfill
+      }
+      %
       \begin{minipage}[c]{\dimexpr \textwidth - 3cm - 3cm}\vspace{.5cm}
         \candidateName\\
-        \rule{\dimexpr \textwidth - 3cm}{1px}\\
-        \candidateBirthday, \quad \candidateLocation\vspace{5pt} \\
-        \candidateEmail, \quad \candidatePhone \candidateDrivingLicence \vspace{5pt} \\
-        \candidateHome, \quad \candidateGithub, \quad \candidateScholar, \quad \candidateUniversity, \quad \candidateLinkedin
+        \@ifundefined{candidatePhoto}{
+          \rule{\dimexpr \textwidth + 2.05cm}{1px}\\
+        }{
+          \rule{\dimexpr \textwidth - 2.95cm}{1px}\\
+        }
+        %
+        \@ifundefined{candidateBirthday}{}{\candidateBirthday, \quad} 
+        \@ifundefined{candidateLocation}{}{\candidateLocation}
+        \vspace{5pt} \\
+        %
+        \@ifundefined{candidateEmail}{}{\candidateEmail, \quad}
+        \@ifundefined{candidatePhone}{}{\candidatePhone, \quad}
+        \@ifundefined{candidateDrivingLicence}{}{\candidateDrivingLicence}
+        \vspace{5pt} \\
+        %
+        \@ifundefined{candidateHome}{}{\candidateHome, \quad}
+        \@ifundefined{candidateGithub}{}{\candidateGithub, \quad}
+        \@ifundefined{candidateScholar}{}{\candidateScholar, \quad}
+        \@ifundefined{candidateUniversity}{}{\candidateUniversity, \quad}
+        \@ifundefined{candidateLinkedin}{}{\candidateLinkedin}
       \end{minipage}
       \vspace{.5cm}
     \end{tcolorbox}
