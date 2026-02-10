@@ -31,11 +31,12 @@
   {\large\bfseries\scshape}
   {}{0em}                       % gives a prefix to all sections
   {}                            % inserts code before the heading
+\titlespacing*{\section}{0em}{.5\baselineskip}{\baselineskip}
 \newcommand\experienceTitle[2]{{
   \scshape\bfseries #1 \hfill #2 \smallskip\newline
 }}
 \newcommand\experienceDetails[2]{{
-  {\scshape #1}\if #2 \space \else \space -- #2 \fi \smallskip\newline
+  {\scshape #1}\if #2 \space \else \space -- #2 \fi \bigskip
 }}
 \newcommand{\experience}[4]{
   \smallskip
