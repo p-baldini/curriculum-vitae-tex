@@ -11,7 +11,6 @@
 \RequirePackage{hyperref}
 \RequirePackage[most]{tcolorbox}
 \RequirePackage{titlesec}
-\RequirePackage{tracklang}
 
 % PAGE STYLE SETTINGS
 \pagestyle{empty}
