@@ -129,10 +129,9 @@
 }
 
 % DECLARATION AND SIGNATURE
-\newcommand{\signature}[1]{\renewcommand{\candidateSignature}{
+\newcommand{\signature}[1]{\newcommand{\candidateSignature}{
   \tcbincludegraphics[hbox, graphics options={width=.85\textwidth}, opacityfill=0]{#1}
 }}
-\newcommand{\candidateSignature}{TODO}
 \newenvironment{declaration}
   {
     \vfill\itshape
@@ -143,10 +142,12 @@
       Mercato Saraceno, \today
     \end{minipage}
     %
-    \begin{minipage}[t]{.25\textwidth}
-      \begin{flushright}
-        Signature:
-        \candidateSignature
-      \end{flushright}
-    \end{minipage}
+    \@ifundefined{candidateSignature}{}{
+      \begin{minipage}[t]{.25\textwidth}
+        \begin{flushright}
+          Signature:
+          \candidateSignature
+        \end{flushright}
+      \end{minipage}
+    }
   }
