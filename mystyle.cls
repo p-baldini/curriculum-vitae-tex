@@ -11,6 +11,7 @@
 \RequirePackage{hyperref}
 \RequirePackage[most]{tcolorbox}
 \RequirePackage{titlesec}
+\RequirePackage{translations}
 
 % PAGE STYLE SETTINGS
 \pagestyle{empty}
@@ -55,14 +56,11 @@
   \tcbincludegraphics[hbox, graphics options={width=\textwidth}, colframe=gray, size=tight, boxrule=2px, arc=15mm, auto outer arc, nobeforeafter]{#1}
 }}
 \newcommand{\name}[1]{\newcommand{\candidateName}{{\Huge\bfseries\scshape #1}}}
-\newcommand{\birthday}[1]{\newcommand{\candidateBirthday}{Date of birth: #1}}
-\newcommand{\datadinascita}[1]{\newcommand{\candidateBirthday}{Nato il #1}}
-\newcommand{\location}[1]{\newcommand{\candidateLocation}{#1}}
-\newcommand{\residenza}[1]{\newcommand{\candidateLocation}{Residente a #1}}
+\newcommand{\birthday}[1]{\newcommand{\candidateBirthday}{\ifcurrentbaselanguage{italian}{Nato il}{Born} #1}}
+\newcommand{\location}[1]{\newcommand{\candidateLocation}{\ifcurrentbaselanguage{italian}{residente a}{located in} #1}}
 \newcommand{\email}[1]{\newcommand{\candidateEmail}{\href{mailto:#1}{\ttfamily #1}}}
 \newcommand{\phone}[1]{\newcommand{\candidatePhone}{#1}}
-\newcommand{\drivingLicence}[1]{\newcommand{\candidateDrivingLicence}{Driving Licence #1}}
-\newcommand{\patente}[1]{\newcommand{\candidateDrivingLicence}{Patente #1}}
+\newcommand{\drivingLicence}[1]{\newcommand{\candidateDrivingLicence}{\ifcurrentbaselanguage{italian}{Patente}{Driving Licence} #1}}
 \newcommand{\home}[2]{\newcommand{\candidateHome}{\href{#2}{\ttfamily \faHome~#1}}}
 \newcommand{\github}[2]{\newcommand{\candidateGithub}{\href{#2}{\ttfamily \faGithub~#1}}}
 \newcommand{\scholar}[2]{\newcommand{\candidateScholar}{\href{#2}{\ttfamily \faGoogle~#1}}}
@@ -95,19 +93,19 @@
           \rule{\dimexpr \textwidth - 2.95cm}{1px}\\
         }
         %
-        \@ifundefined{candidateBirthday}{}{\candidateBirthday, \quad} 
+        \@ifundefined{candidateBirthday}{}{\candidateBirthday, \;} 
         \@ifundefined{candidateLocation}{}{\candidateLocation}
         \vspace{5pt} \\
         %
-        \@ifundefined{candidateEmail}{}{\candidateEmail, \quad}
-        \@ifundefined{candidatePhone}{}{\candidatePhone, \quad}
+        \@ifundefined{candidateEmail}{}{\candidateEmail, \;}
+        \@ifundefined{candidatePhone}{}{\candidatePhone, \;}
         \@ifundefined{candidateDrivingLicence}{}{\candidateDrivingLicence}
         \vspace{5pt} \\
         %
-        \@ifundefined{candidateHome}{}{\candidateHome, \quad}
-        \@ifundefined{candidateGithub}{}{\candidateGithub, \quad}
-        \@ifundefined{candidateScholar}{}{\candidateScholar, \quad}
-        \@ifundefined{candidateUniversity}{}{\candidateUniversity, \quad}
+        \@ifundefined{candidateHome}{}{\candidateHome, \;}
+        \@ifundefined{candidateGithub}{}{\candidateGithub, \;}
+        \@ifundefined{candidateScholar}{}{\candidateScholar, \;}
+        \@ifundefined{candidateUniversity}{}{\candidateUniversity, \;}
         \@ifundefined{candidateLinkedin}{}{\candidateLinkedin}
       \end{minipage}
       \vspace{.5cm}
@@ -133,8 +131,7 @@
       \repeat
   }
 \newcommand\languageknowledge[3]{
-  % \hbox{\makebox[2cm][l]{#1} \knowledge{#2} \quad #3 \hfill}
-  \makebox[3cm][l]{#1} \knowledge{#2} \quad #3
+  #1 \hfill \makebox[4.5cm][l]{\knowledge{#2} \quad #3}
 }
 
 % DECLARATION AND SIGNATURE
