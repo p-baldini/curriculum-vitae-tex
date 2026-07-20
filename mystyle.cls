@@ -2,6 +2,7 @@
 \ProvidesClass{mystyle}[2026/02/10 P. Baldini custom CV class]
 \LoadClass{article}
 
+\RequirePackage{calc}
 \RequirePackage[sfdefault]{classico}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{fontawesome}
